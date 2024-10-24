@@ -4,7 +4,6 @@ function init() {
     let links, numlinks;
 
     links = document.getElementsByTagName("a");
-    numlinks = links.length;
 
     for(let i = 0; i < links.length; i++) {
         //could also try for attach event but yeah
@@ -18,7 +17,7 @@ function init() {
                 event.returnValue = false;
 
             //makes the request with the id
-            makerequest('content' + this.id + '.html', 'content');
+            makerequest('pages/content' + this.id + '.txt', 'content');
             return false;
         },false);
     }

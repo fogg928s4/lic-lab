@@ -5,7 +5,7 @@ let xmlhttp = false;
 //
 try {
     //check for older browser versions
-    xmlhttp = new ActiveXObject("Mxxml2.XMLHTTP");
+    xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
 }
 catch (e) {
     //if not use trad ActiveX method
@@ -27,9 +27,13 @@ if(!xmlhttp && typeof XMLHttpRequest != 'undefined') {
 //second arg is the id which in this case should be content
 function makerequest(serverPage, objID) {
     let obj = document.getElementById(objID);
+    //GETS the page requested
     xmlhttp.open("GET", serverPage);
+    //now its ready to go
     xmlhttp.onreadystatechange = function() {
-        if(xmlhttp.readState == 4 && xmlhttp.status == 200) {
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            console.log(xmlhttp.responseText);
+            //remember toadd the div where the stuff will go
             obj.innerHTML = xmlhttp.responseText;
         }
     }
